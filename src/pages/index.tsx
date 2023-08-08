@@ -1,9 +1,11 @@
 import styles from "./index.module.css";
 import Head from "next/head";
 import Link from "next/link";
-import {SignIn} from "@clerk/nextjs";
+import {SignIn, SignInButton, SignOutButton, useUser} from "@clerk/nextjs";
 
 export default function Home() {
+
+  const user = useUser();
   return (
     <>
       <Head>
@@ -12,6 +14,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+        <div>
+          {!user.isSignedIn && <SignInButton />}
+          {!!user.isSignedIn && <SignOutButton/>}
+          
+        </div>
       <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" />
       </main>
     </>
