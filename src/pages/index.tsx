@@ -14,10 +14,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+
+        {/* this div is the sign in & out functionality */}
         <div>
           {!user.isSignedIn && <SignInButton />}
           {!!user.isSignedIn && <SignOutButton/>}
-          
         </div>
       <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" />
       </main>
