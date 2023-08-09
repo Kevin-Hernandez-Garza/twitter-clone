@@ -11,7 +11,7 @@ export default function Home() {
 
   // FIX
   // data has the correct Post array structure
-  const { data } = api.posts.getAll.useQuery();
+  // const { data } = api.posts.getAll.useQuery();
 
 
   return (
