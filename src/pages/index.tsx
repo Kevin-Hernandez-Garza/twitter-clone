@@ -2,13 +2,16 @@ import styles from "./index.module.css";
 import Head from "next/head";
 import Link from "next/link";
 import {SignIn, SignInButton, SignOutButton, useUser} from "@clerk/nextjs";
+import { type NextPage } from "next";
 
 export default function Home() {
 
   const user = useUser();
 
+
+  // FIX
   // data has the correct Post array structure
-  // const { data } = api.example.getAll.useQuery();
+  const { data } = api.posts.getAll.useQuery();
 
 
   return (
@@ -22,6 +25,8 @@ export default function Home() {
 
         {/* this div is the sign in & out functionality */}
         <div>
+          {/* double knot, when there is a user prompt sign-out
+          if not sign-in prompt sign-in. */}
           {!user.isSignedIn && <SignInButton />}
           {!!user.isSignedIn && <SignOutButton/>}
         </div>
